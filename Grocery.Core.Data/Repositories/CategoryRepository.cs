@@ -5,14 +5,14 @@ namespace Grocery.Core.Data.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private readonly List<Category> categoriesList;
+        private readonly List<Category> categoriesLists;
 
         public CategoryRepository()
         {
-            categoriesList =
+            categoriesLists =
             [
                 new Category(1, "Groente"),
-                new Category(2, "Fruit"),
+                new Category(2, "Bakkerij"),
                 new Category(3, "Zuivel"),
 
             ];
@@ -20,7 +20,7 @@ namespace Grocery.Core.Data.Repositories
 
         public List<Category> GetAll()
         {
-            return categoriesList;
+            return categoriesLists;
         }
 
         public Category Add(Category item)
@@ -35,13 +35,15 @@ namespace Grocery.Core.Data.Repositories
 
         public Category? Get(int id)
         {
-            Category? category = categoriesList.FirstOrDefault(c => c.Id == id);
+            Category? category = categoriesLists.FirstOrDefault(c => c.Id == id);
             return category;
         }
 
         public Category? Update(Category item)
         {
-            throw new NotImplementedException();
+            Category? categoryList = categoriesLists.FirstOrDefault(c => c.Id == item.Id);
+            categoryList = item;
+            return categoryList;
         }
     }
 }

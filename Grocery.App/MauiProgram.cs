@@ -34,8 +34,8 @@ namespace Grocery.App
             builder.Services.AddSingleton<IFileSaverService, FileSaverService>();
             builder.Services.AddSingleton<IBoughtProductsService, BoughtProductsService>();
             // Register Category and ProductCategory repositories and services
-            // builder.Services.AddSingleton<ICategoryService, CategoryService>();
-            // builder.Services.AddSingleton<IProductCategoryService, ProductCategoryService>();
+            builder.Services.AddSingleton<ICategoryService, CategoryService>();
+            builder.Services.AddSingleton<IProductCategoryService, ProductCategoryService>();
 
             
 

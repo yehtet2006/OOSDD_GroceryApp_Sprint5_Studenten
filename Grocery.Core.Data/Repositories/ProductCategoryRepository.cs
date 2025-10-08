@@ -9,21 +9,29 @@ namespace Grocery.Core.Data.Repositories
         
         public ProductCategoryRepository()
         {
-            productCategoriesList = new List<ProductCategory>
-            {
-               new ProductCategory(1, "Groente", 1, 1),
-               new ProductCategory(2, "Groente", 2, 1),
-               new ProductCategory(3, "Groente", 3, 1),
-            };
+            productCategoriesList =
+            [
+                new ProductCategory(1, 1, 1),
+                new ProductCategory(2, 2, 1),
+                new ProductCategory(3, 3, 1),
+            ];
         }
         public List<ProductCategory> GetAll()
         {
             return productCategoriesList;
         }
 
+        public List<ProductCategory> GetAllOnCategoryId(int id)
+        {
+            return productCategoriesList.Where(p => p.CategoryId == id).ToList();
+        }
+        
         public ProductCategory? Add(ProductCategory item)
         {
-            throw new NotImplementedException();
+            int newId = productCategoriesList.Max(g => g.Id) + 1;
+            item.Id = newId;
+            productCategoriesList.Add(item);
+            return Get(item.Id); 
         }
 
         public ProductCategory? Delete(ProductCategory item)
@@ -33,12 +41,14 @@ namespace Grocery.Core.Data.Repositories
 
         public ProductCategory? Get(int id)
         {
-            throw new NotImplementedException();
+            return productCategoriesList.FirstOrDefault(p => p.Id == id);
         }
 
         public ProductCategory? Update(ProductCategory item)
         {
-            throw new NotImplementedException();
+            ProductCategory? listItem = productCategoriesList.FirstOrDefault(i => i.Id == item.Id);
+            listItem = item;
+            return listItem;
         }
     }
 }

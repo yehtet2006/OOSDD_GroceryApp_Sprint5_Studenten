@@ -6,6 +6,8 @@ namespace Grocery.Core.Interfaces.Repositories
     {
         public List<ProductCategory> GetAll(); // Get all product categories
         
+        public List<ProductCategory> GetAllOnCategoryId(int id); // Get product categories by category ID
+        
         public ProductCategory? Add(ProductCategory item); // Add a new product category
         
         public ProductCategory? Delete(ProductCategory item); // Delete a product category
