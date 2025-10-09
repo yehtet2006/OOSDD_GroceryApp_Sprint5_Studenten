@@ -3,7 +3,7 @@ on:
     branches:
       - main
       - Development
-      - feature/UnitTesting
+      - feature/**
   pull_request:
     branches:
       - main
